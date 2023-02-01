@@ -11,6 +11,5 @@ const bootstrap = async () => {
 	} catch (error) {
 		console.error('connection fails', error)
 	}
-
 };
 bootstrap();
