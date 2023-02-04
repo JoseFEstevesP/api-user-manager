@@ -1,9 +1,16 @@
-import { Router } from "express";
-const userRoutes = Router()
-userRoutes.post('/register')
-userRoutes.post('/login')
-userRoutes.get('/profile')
-userRoutes.patch('/update-data')
-userRoutes.patch('/update-email')
-userRoutes.patch('/update-password')
-export default userRoutes
+import userLoginDTO from '#Dto/user-login.dto.js';
+import userRegisterDTO from '#Dto/user-register.dto.js';
+import userUnregisterDTO from '#Dto/user-unregister.dto.js';
+import userUpdateDataDTO from '#Dto/user-update-data.dto.js';
+import userUpdateEmailDTO from '#Dto/user-update-email.dto.js';
+import userUpdatePasswordDTO from '#Dto/user-update-password.dto.js';
+import { Router } from 'express';
+const userRoutes = Router();
+userRoutes.post('/register', userRegisterDTO);
+userRoutes.post('/login', userLoginDTO);
+userRoutes.get('/profile');
+userRoutes.patch('/update-data', userUpdateDataDTO);
+userRoutes.patch('/update-email', userUpdateEmailDTO);
+userRoutes.patch('/update-password', userUpdatePasswordDTO);
+userRoutes.delete('/unregister', userUnregisterDTO);
+export default userRoutes;
