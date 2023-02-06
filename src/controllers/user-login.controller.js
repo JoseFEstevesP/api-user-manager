@@ -5,12 +5,17 @@ const userLoginController = async (req, res) => {
   const { email, password } = req.body;
   const existingUserByEmail = await UserModel.findOne({ email }).exec();
   if (!existingUserByEmail)
-    return res.status(401).send('Credenciales incorrectas');
+    return res.status(401).send({ errors: ['Credenciales incorrectas'] });
   const checkPassword = await compare(password, existingUserByEmail.password);
-  if (!checkPassword) return res.status(401).send('Credenciales incorrectas');
-	const jwtConstructor = new SignJWT({id:existingUserByEmail._id})
-	const encoder = new TextEncoder()
-	const jwt = await jwtConstructor.setProtectedHeader({alg:'HS256',typ:'JWT'}).setIssuedAt().setExpirationTime('7d').sign(encoder.encode(process.env.JWT_PRIVATE_KEY))
-return res.send({JWT:jwt})
+  if (!checkPassword)
+    return res.status(401).send({ errors: ['Credenciales incorrectas'] });
+  const jwtConstructor = new SignJWT({ id: existingUserByEmail._id });
+  const encoder = new TextEncoder();
+  const jwt = await jwtConstructor
+    .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
+    .setIssuedAt()
+    .setExpirationTime('7d')
+    .sign(encoder.encode(process.env.JWT_PRIVATE_KEY));
+  return res.send({ JWT: jwt });
 };
 export default userLoginController;
