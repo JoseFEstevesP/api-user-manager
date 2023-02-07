@@ -1,7 +1,6 @@
 import httpServer from '#Config/http.js';
 import '#Config/env.js';
 import connectDB from '#Config/db.js';
-console.clear();
 const bootstrap = async () => {
   try {
     await connectDB(process.env.MONGODB_URL);

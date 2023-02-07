@@ -39,6 +39,7 @@
   },
   "imports": {
     "#Config/*": "./src/config/*",
+    "#Functions/*": "./src/functions/*",
     "#Constants/*": "./src/constants/*",
     "#Controllers/*": "./src/controllers/*",
     "#Dto/*": "./src/dto/*",

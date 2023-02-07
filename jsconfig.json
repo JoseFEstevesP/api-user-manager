@@ -9,7 +9,8 @@
       "#Constants/*": ["./src/constants/*"],
       "#Dto/*": ["./src/dto/*"],
       "#Routes/*": ["./src/routes/*"],
-      "#Schemas/*": ["./src/schemas/*"]
+      "#Schemas/*": ["./src/schemas/*"],
+      "#Functions/*": ["./src/functions/*"]
     }
   }
 }

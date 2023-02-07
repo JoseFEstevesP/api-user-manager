@@ -9,6 +9,7 @@ import {
   passwordDTOSchemas,
   surnameDTOSchemas,
 } from '#Dto/dto-types.js';
+import { regExpPassword } from '#Constants/reg-exp.js';
 const registerDTOSchema = Type.Object(
   {
     _id: idDTOSchemas,
@@ -27,7 +28,7 @@ const registerDTOSchema = Type.Object(
 const ajv = new Ajv({ allErrors: true })
   .addKeyword('kind')
   .addKeyword('modifier');
-ajv.addFormat('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/);
+ajv.addFormat('password', regExpPassword);
 addFormats(ajv, ['email', 'uuid']);
 addErrors(ajv);
 const validateSchema = ajv.compile(registerDTOSchema);

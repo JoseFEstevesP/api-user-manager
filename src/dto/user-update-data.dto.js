@@ -2,6 +2,7 @@ import { Type } from '@sinclair/typebox';
 import Ajv from 'ajv';
 import addErrors from 'ajv-errors';
 import { nameDTOSchemas, surnameDTOSchemas } from '#Dto/dto-types.js';
+import { regExpPassword } from '#Constants/reg-exp.js';
 const updateDataDTOSchema = Type.Object(
   {
     name: nameDTOSchemas,
@@ -17,7 +18,7 @@ const updateDataDTOSchema = Type.Object(
 const ajv = new Ajv({ allErrors: true })
   .addKeyword('kind')
   .addKeyword('modifier');
-ajv.addFormat('password', /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/);
+ajv.addFormat('password', regExpPassword);
 addErrors(ajv);
 const validateSchema = ajv.compile(updateDataDTOSchema);
 const userUpdateDataDTO = (req, res, next) => {
