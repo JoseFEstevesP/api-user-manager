@@ -1,19 +1,5 @@
 {
-  "name": "user-management",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Aplicación que para la gestión de usuarios de una aplicación web",
-  "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "lint": "eslint src/**/*.js --fix",
-    "prettier": "prettier --write .",
-    "prepare": "husky install",
-    "postinstall": "npm run prepare",
-    "format": "prettier --write ."
-  },
   "author": "José Esteves",
-  "license": "MIT",
   "dependencies": {
     "@sinclair/typebox": "0.25.21",
     "ajv": "8.12.0",
@@ -23,8 +9,9 @@
     "dotenv": "16.0.3",
     "express": "4.18.2",
     "jose": "4.11.2",
-    "mongoose": "6.6.1"
+    "mongoose": "6.12.0"
   },
+  "description": "Aplicación que para la gestión de usuarios de una aplicación web",
   "devDependencies": {
     "eslint": "8.18.0",
     "eslint-config-prettier": "8.5.0",
@@ -34,20 +21,33 @@
     "eslint-plugin-promise": "6.0.0",
     "husky": "8.0.1",
     "lint-staged": "13.0.2",
-    "nodemon": "2.0.20",
+    "nodemon": "3.0.1",
     "prettier": "2.7.1"
   },
   "imports": {
     "#Config/*": "./src/config/*",
-    "#Functions/*": "./src/functions/*",
     "#Constants/*": "./src/constants/*",
     "#Controllers/*": "./src/controllers/*",
     "#Dto/*": "./src/dto/*",
+    "#Functions/*": "./src/functions/*",
     "#Routes/*": "./src/routes/*",
     "#Schemas/*": "./src/schemas/*"
   },
+  "license": "MIT",
   "lint-staged": {
     "*.js": "eslint --fix",
     "*.{js,md}": "prettier --write"
-  }
+  },
+  "name": "user-management",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "format": "prettier --write .",
+    "lint": "eslint src/**/*.js --fix",
+    "postinstall": "npm run prepare",
+    "prepare": "husky install",
+    "prettier": "prettier --write .",
+    "start": "node src/index.js"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }
